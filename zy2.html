@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>用户注册</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>用户注册</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th colspan="2">注册须知</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>账号要求</td>
+                        <td>用户名唯一，不可冒用他人信息</td>
+                    </tr>
+                    <tr>
+                        <td>安全承诺</td>
+                        <td>妥善保管账号密码，不要泄露</td>
+                    </tr>
+                </tbody>
+            </table>
+            <ul>
+                <li>禁止虚假信息注册账号</li>
+                <li>违反平台规则账号会被封禁</li>
+            </ul>
+        </header>
+
+        <main>
+            <form id="regForm">
+                <p>
+                    <label>用户名：</label>
+                    <input type="text" name="username" required>
+                </p>
+                <p>
+                    <label>密&nbsp;&nbsp;&nbsp;码：</label>
+                    <input type="password" name="password" placeholder="6-16位字符" required>
+                </p>
+                <p>
+                    <label>确认密码：</label>
+                    <input type="password" name="confirmPassword" required>
+                </p>
+                <p>
+                    <label>性&nbsp;&nbsp;&nbsp;别：</label>
+                    <input type="radio" name="gender" id="male" value="male">
+                    <label for="male" class="auto-width">男</label>
+                    <label class="auto-width">
+                        <input type="radio" name="gender" value="female">女
+                    </label>
+                </p>
+                <p>
+                    <label>出生日期：</label>
+                    <input type="date" name="birthday" required>
+                </p>
+                <p>
+                    <label>邮&nbsp;&nbsp;&nbsp;箱：</label>
+                    <input type="email" name="email" required>
+                </p>
+                <p>
+                    <label>手&nbsp;&nbsp;&nbsp;机：</label>
+                    <input type="tel" name="phone" required pattern="[0-9]{11}">
+                </p>
+                <p>
+                    <label>兴趣爱好：</label>
+                    <input type="checkbox" name="hobby" value="reading">阅读
+                    <input type="checkbox" name="hobby" value="sport">运动
+                    <input type="checkbox" name="hobby" value="music">音乐
+                </p>
+                <p>
+                    <label>上传头像：</label>
+                    <input type="file" name="avatar" accept="image/*" multiple>
+                </p>
+                <p>
+                    <label>所在城市：</label>
+                    <select name="city">
+                        <option value="changde" selected>常德</option>
+                        <option value="changsha">长沙</option>
+                        <option value="yueyang">岳阳</option>
+                    </select>
+                </p>
+                <p>
+                    <label>个人简介：</label>
+                    <textarea name="bio" rows="4" cols="50"></textarea>
+                </p>
+                <p>
+                    <label></label>
+                    <button type="submit">注册</button>
+                    <button type="reset">重置</button>
+                </p>
+            </form>
+            <h3>注册步骤</h3>
+            <ol>
+                <li>填写全部个人信息</li>
+                <li>阅读注册须知</li>
+                <li>提交表单完成注册</li>
+            </ol>
+            <dl>
+                <dt>常见问题</dt>
+                <dd>忘记密码：通过绑定邮箱找回</dd>
+                <dd>手机号：必须填写11位数字</dd>
+            </dl>
+        </main>
+
+        <footer>
+            <p>©版权所有</p>
+        </footer>
+    </div>
+
+    <script>
+        const form = document.getElementById("regForm");
+        form.addEventListener("submit", function (e) {
+            e.preventDefault();
+            const formData = new FormData(form);
+            let dataObj = {};
+            for (let [key, value] of formData) {
+                dataObj[key] = value;
+            }
+            console.log("收集的表单数据：", dataObj);
+        })
+    </script>
+</body>
+</html>
